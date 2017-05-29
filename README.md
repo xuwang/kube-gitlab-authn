@@ -40,7 +40,7 @@ kube-gitlab-authn implements GitLab webwook token authenticator using [go-gitlab
 
 ### Run the authenticator as a systemd unit
 
-Here is an example of [gitlab-authn systemd unit](systemd/github-authn.service). This service should run on all master nodes, i.e. along side with kubernetes api-servers.
+Here is an example of [gitlab-authn systemd unit](systemd/gitlab-authn.service). This service should run on all master nodes, i.e. along side with kubernetes api-servers.
 
 Make sure to set the `GITLAB_API_ENDPOINT` to your gitlab server in the `gitlab-authn.service` file.
 
@@ -75,6 +75,6 @@ If the token is incorrect or the authenticator is not working:
 kubectl get pods
 error: You must be logged in to the server (the server has asked for the client to provide credentials)
 ```
-If it works, you should get a list of podes in kubernetes cluster.
+If it works, you should get a list of pods in kubernetes cluster.
 
 
