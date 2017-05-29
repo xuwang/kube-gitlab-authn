@@ -1,0 +1,14 @@
+[Unit]
+Description=gitlab-authn
+Requires=docker.service
+After=docker.service
+
+[Service]
+Environment=IMAGE=xuwang/kube-gitlab-authn
+# Set GITLAB_API_ENDPOINT to your gitlab api
+Environment=GITLAB_API_ENDPOINT=https://gitlab.example.com/api/v3/
+ExecStartPre=-/usr/bin/docker rm %n
+ExecStart=/usr/bin/docker run --rm --name %n --net=host -p 3000:3000 -e GITLAB_API_ENDPOINT=${GITLAB_API_ENDPOINT} ${IMAGE}
+ExecStop=/usr/bin/docker stop %n
+RestartSec=10
+Restart=always

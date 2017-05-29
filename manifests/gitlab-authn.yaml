@@ -1,0 +1,30 @@
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  labels:
+    k8s-app: gitlab-authn
+  name: gitlab-authn
+  namespace: kube-system
+spec:
+  selector:
+    matchLabels:
+      k8s-app: gitlab-authn
+  template:
+    metadata:
+      labels:
+        k8s-app: gitlab-authn
+      annotations:
+        scheduler.alpha.kubernetes.io/critical-pod: ''
+    spec:
+      containers:
+      - image: xuwang/kube-gitlab-authn
+        env:
+          - name: GITLAP_API_ENDPOINT
+            value: https://gitlab.example.com/api/v3/
+        name: gitlab-authn
+        ports:
+        - containerPort: 3000
+          hostPort: 3000
+          protocol: TCP
+      hostNetwork: true
+      restartPolicy: Always

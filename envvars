@@ -1,0 +1,4 @@
+REPO=github.com/xuwang/kube-gitlab-authn
+IMAGE=xuwang/kube-gitlab-authn
+PORT=3000
+GITLAB_API_ENDPOINT=https://gitlib.example.com/v3/api/
