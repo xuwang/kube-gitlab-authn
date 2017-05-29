@@ -65,11 +65,11 @@ kubectl create rolebinding johndoe-admin-binding --clusterrole=admin --user=john
 kubectl create clusterrolebinding johndoe-admin-binding --clusterrole=admin --user=johndoe
 ```
 
-* Distribute your cluster's `ca.pem` to users who need to access the cluster. Here is a [extract_kubecfg_cert.sh]( https://gist.github.com/xueshanf/71f188c58553c82bda16f80483e71918) to help you to extract cluster ca cert from kubecfg. 
+* Distribute your cluster's `ca.pem` to users who need to access the cluster. Here is a [extract_kubecfg_cert.sh]( https://gist.github.com/xueshanf/71f188c58553c82bda16f80483e71918) to help you to extract cluster ca cert from kubecfg.
 
 ## Generate kubecfg for user
 
-User `johndoe` now can generate `kubecfg` file in $HOME/.kube directory using his [GitLab Access Token](https://gitlab.example.come/profile/account). Here is a [generate-kubecfg.sh](generate-kubecfg.sh) to help to configure `kubecfg`.
+User `johndoe` now can generate `kubecfg` file in $HOME/.kube directory using his [GitLab Access Token](https://gitlab.example.come/profile/account). Here is a [generate-kubecfg.sh](scripts/generate-kubecfg.sh) to help to configure `kubecfg`.
 
 ## Test
 

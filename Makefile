@@ -3,7 +3,7 @@ export
 
 .PHONY: build
 build:
-	docker build --build-arg repo=${REPO} -t $(IMAGE) .
+	docker build --rm --build-arg repo=${REPO} -t $(IMAGE) .
 
 .PHONY: run
 run:
