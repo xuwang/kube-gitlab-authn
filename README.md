@@ -6,7 +6,7 @@ kube-gitlab-authn implements GitLab webwook token authenticator using [go-gitlab
 
 ### Run the authenticator as DaemonSet
 
-* Start the authenticator as DaemonSetmonset on kube-apiserver:
+* Start the authenticator as DaemonSet on kube-apiserver:
 
   ```
   kubectl create -f https://github.com/xuwang/kube-gitlab-authn/blob/master/manifests/gitlab-authn.yaml
@@ -18,9 +18,15 @@ kube-gitlab-authn implements GitLab webwook token authenticator using [go-gitlab
   kubectl get pod -l k8s-app=gitlab-authn -n kube-system
   ```
 
-* Configure apiserver to verify bearer token using this authenticator.
+### Or Run the authenticator as a systemd unit
 
-  There are two configuration options you need to set:
+Here is an example of [gitlab-authn systemd unit](systemd/gitlab-authn.service). This service should run on all master nodes, i.e. along side with kubernetes api-servers.
+
+Make sure to set the `GITLAB_API_ENDPOINT` to your gitlab server in the `gitlab-authn.service` file.
+
+### Configure kube-apiserver
+
+For kube-apiserver to verify bearer token with this authenticator, there are two configuration options need to be set:
 
     * `--authentication-token-webhook-config-file` a kubeconfig file describing how to
   access the remote webhook service.
@@ -37,12 +43,6 @@ kube-gitlab-authn implements GitLab webwook token authenticator using [go-gitlab
   --authentication-token-webhook-config-file=/var/lib/kubernetes/kube-gitlab-authn.json \
   ...
   ```
-
-### Run the authenticator as a systemd unit
-
-Here is an example of [gitlab-authn systemd unit](systemd/gitlab-authn.service). This service should run on all master nodes, i.e. along side with kubernetes api-servers.
-
-Make sure to set the `GITLAB_API_ENDPOINT` to your gitlab server in the `gitlab-authn.service` file.
 
 ## Authorization with role-based access control (RBAC)
 
