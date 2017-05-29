@@ -1,5 +1,5 @@
 REPO=github.com/xuwang/kube-gitlab-authn
 IMAGE=xuwang/kube-gitlab-authn
 PORT=3000
-GITLAB_API_ENDPOINT=https://gitlab.med.stanford.edu/api/v3/
+GITLAB_API_ENDPOINT=https://gitlab.example.com/api/v3/
 GITLAB_TOKEN=<test_token>
