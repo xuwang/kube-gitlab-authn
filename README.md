@@ -28,9 +28,9 @@ Make sure to set the `GITLAB_API_ENDPOINT` to your gitlab server in the `gitlab-
 
 For kube-apiserver to verify bearer token with this authenticator, there are two configuration options need to be set:
 
-    * `--authentication-token-webhook-config-file` a kubeconfig file describing how to
+ * `--authentication-token-webhook-config-file` a kubeconfig file describing how to
   access the remote webhook service.
-    * `--authentication-token-webhook-cache-ttl` how long to cache authentication decisions. Defaults to two minutes.
+ * `--authentication-token-webhook-cache-ttl` how long to cache authentication decisions. Defaults to two minutes.
 
   Check the [example config file](manifests/token-webhook-config.json) and save
   this file in the Kubernetes master. Set the path to this config file with configurion option above.
