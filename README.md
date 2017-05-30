@@ -1,6 +1,13 @@
 # Kubernetes Webhook Token Authenticator for GitLab
 
-kube-gitlab-authn implements GitLab webwook token authenticator using [go-gitlab]( github.com/xanzy/go-gitlab) to allow users to use GitLab Personal Access Token to access Kubernetes cluster. It is based on the work of [kubernetes-github-authn](https://github.com/oursky/kubernetes-github-authn/), please refer to the original [README](https://github.com/oursky/kubernetes-github-authn/blob/master/README.md) for the GitHub webhook token authenticator's design and implementation.
+kube-gitlab-authn implements GitLab webhook token authenticator using [go-gitlab]( github.com/xanzy/go-gitlab) to allow users to use GitLab Personal Access Token to access Kubernetes cluster. It is based on the work of [kubernetes-github-authn](https://github.com/oursky/kubernetes-github-authn/), please refer to the original [README](https://github.com/oursky/kubernetes-github-authn/blob/master/README.md) for the GitHub webhook token authenticator's design and implementation.
+
+## Features
+
+* Support user kubernetes cluster authentication using GitLab personal access token
+* Map GitLab users to kubenenetes users
+* Map GitLab groups to Kubernetes groups
+* Support RABC based authorization
 
 ## How to use
 
@@ -52,6 +59,8 @@ documentation](https://kubernetes.io/docs/admin/authorization/rbac/) about confi
 
 Assuming you already have an `admin` user with cluster role configured in your kubecfg. With this admin credential, you can assign roles to other users.
 
+* Distribute your cluster's `ca.pem` to users who need to access the cluster. Here is a [extract_kubecfg_cert.sh]( https://gist.github.com/xueshanf/71f188c58553c82bda16f80483e71918) to help you to extract cluster ca cert from kubecfg.
+
 * Assign user `johndoe` admin role to namespace `gitlab`
 
 ```
@@ -64,8 +73,6 @@ kubectl create rolebinding johndoe-admin-binding --clusterrole=admin --user=john
 ```
 kubectl create clusterrolebinding johndoe-admin-binding --clusterrole=admin --user=johndoe
 ```
-
-* Distribute your cluster's `ca.pem` to users who need to access the cluster. Here is a [extract_kubecfg_cert.sh]( https://gist.github.com/xueshanf/71f188c58553c82bda16f80483e71918) to help you to extract cluster ca cert from kubecfg.
 
 ## Generate kubecfg for user
 
