@@ -73,7 +73,7 @@ echo kubectl config set-cluster kubernetes...
 kubectl config set-cluster ${clusterName} \
     --certificate-authority=${caPem} \
     --embed-certs=true \
-    --server=https://${apiServer}:6443
+    --server=https://${apiServer}
 
 echo kubectl config set-credentials $username...
 kubectl config set-credentials $userName --token=$gitlabToken
