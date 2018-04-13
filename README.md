@@ -16,7 +16,7 @@ kube-gitlab-authn implements GitLab webhook token authenticator using [go-gitlab
 * Start the authenticator as DaemonSet on kube-apiserver:
 
   ```
-  kubectl create -f https://github.com/xuwang/kube-gitlab-authn/blob/master/manifests/gitlab-authn.yaml
+  kubectl create -f https://raw.githubusercontent.com/xuwang/kube-gitlab-authn/master/manifests/gitlab-authn.yaml
   ```
 
   Confirm that the authenticator is running:
