@@ -19,7 +19,7 @@ spec:
       containers:
       - image: xuwang/kube-gitlab-authn
         env:
-          - name: GITLAP_API_ENDPOINT
+          - name: GITLAB_API_ENDPOINT
             value: https://gitlab.example.com/api/v3/
         name: gitlab-authn
         ports:
